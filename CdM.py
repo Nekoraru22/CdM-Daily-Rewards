@@ -59,9 +59,9 @@ def start(name):
 
 # -------- Login -------- #
 cuentas = {
-        "neko": {
-            "usuario": "xkoeppb_h794z@hexud.com",
-            "contraseña": "xkoeppb"
+        "null": {
+            "usuario": "",
+            "contraseña": ""
     },
         "null": {
             "usuario": "",
