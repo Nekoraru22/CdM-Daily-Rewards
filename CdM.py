@@ -6,7 +6,7 @@ from colorama import init, Fore
 import time
 
 init()
-print(Fore.LIGHTYELLOW_EX + "[·] Loading..." + Fore.RESET)
+print(Fore.LIGHTYELLOW_EX + "[·] Cargando..." + Fore.RESET)
 
 # -------- Actividades -------- #
 def Flower_Pawer():
