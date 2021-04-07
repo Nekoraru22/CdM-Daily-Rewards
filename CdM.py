@@ -14,14 +14,37 @@ def Flower_Pawer():
     try:
         browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/app-modal/div/div[2]/div/button").click()
         canvas = browser.find_element_by_xpath("/html/body/app-amoursucre/index/app-connected-page/div/div[3]/div[1]/games/flower-pawer/page-sheet-container/div/stage/canvas")
-        drawing = ActionChains(browser)\
-            .move_to_element_with_offset(canvas, 0,0)\
-            .move_by_offset(80, 0)\
-            .click()\
-            .release()
-        drawing.perform()
-        time.sleep(15)
-        browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
+        
+        x = 0
+        j = True
+
+        while x < 100:
+            drawing = ActionChains(browser)\
+                .move_to_element_with_offset(canvas, 0,0)\
+                .move_by_offset(x, 0)\
+                .click()\
+                .release()
+            drawing.perform()
+            x = x + 1
+
+            try:
+                browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
+                j = False
+                print("started new one")
+                break
+            except:
+                continue
+        
+        # time.sleep(15)
+        
+        while j == True:
+            print("ended")
+            try:
+                browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
+                j = False
+            except:
+                None
+
     except:
         print(Fore.LIGHTRED_EX + "[·] Actividad [Flower Pawer] ya completada." + Fore.RESET)
 
@@ -31,6 +54,7 @@ def Rasca_y_gana():
         browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/app-modal/div/div[2]/div/button").click()
         canvas = browser.find_element_by_xpath("/html/body/app-amoursucre/index/app-connected-page/div/div[3]/div[1]/games/cash/page-sheet-container/div/stage/canvas")
         drawing = ActionChains(browser)\
+            .move_to_element_with_offset(canvas, 0,0)\
             .click_and_hold(canvas)\
             .move_by_offset(-50, -50)\
             .move_by_offset(0, 140)\
@@ -42,7 +66,7 @@ def Rasca_y_gana():
             .move_by_offset(0, -90)\
             .release()
         drawing.perform()
-        browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
+        # browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
     except:
         print(Fore.LIGHTRED_EX + "[·] Actividad [Rasca y gana] ya completada." + Fore.RESET)
 
@@ -115,8 +139,3 @@ else:
         if not cuenta == "null":
             login(cuenta, cuentas[cuenta]["usuario"], cuentas[cuenta]["contraseña"])    
     browser.close()
-    
-
-    
-
-
