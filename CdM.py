@@ -20,19 +20,22 @@ def Flower_Pawer():
             .release()
         drawing.perform()
 
-        for x in range(30):
+        for x in range(29):
             drawing = ActionChains(browser)\
-                .move_by_offset(x, 0)\
+                .move_by_offset(x, x)\
                 .click()\
                 .release()
             drawing.perform()
 
         time.sleep(5)
-        while True:
+        check = True
+
+        print(Fore.LIGHTYELLOW_EX + "\t↳ Waiting..." + Fore.RESET)
+        while check == True:
             try:
                 browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/button").click()
-                print("\t↳" + Fore.LIGHTMAGENTA_EX + browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/div/i18n/span").text)
-                break
+                #print("\t↳" + Fore.LIGHTMAGENTA_EX + browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/game-gain/app-modal/div/div/div/i18n/span").text)
+                check = False
             except:
                 None
         print(Fore.LIGHTGREEN_EX + "[·] Actividad " + Fore.LIGHTYELLOW_EX + "[Flower Pawer]" + Fore.LIGHTGREEN_EX + " completada!" + Fore.RESET)
@@ -134,3 +137,4 @@ else:
         if not cuenta == "null":
             login(cuenta, cuentas[cuenta]["usuario"], cuentas[cuenta]["contraseña"])    
     browser.close()
+    input(Fore.LIGHTMAGENTA_EX + "\nPresiona cualquier tecla para cerrar :3" + Fore.RESET)
