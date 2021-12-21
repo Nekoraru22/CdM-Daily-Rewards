@@ -3,7 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from colorama import init, Fore
-import time
+import time, update_chromedriver
 
 init()
 print(Fore.LIGHTYELLOW_EX + "[·] Cargando..." + Fore.RESET)
@@ -81,13 +81,13 @@ def start(name):
 
 # -------- Login -------- #
 cuentas = {
-        "null": {
-            "usuario": "",
-            "contraseña": ""
+        "LewdNeko": {
+            "usuario": "mabapa9797@vreagles.com",
+            "contraseña": "mabapa9797"
     },
-        "null": {
-            "usuario": "",
-            "contraseña": ""
+        "neko": {
+            "usuario": "xkoeppb_h794z@hexud.com",
+            "contraseña": "xkoeppb"
     },
         "null": {
             "usuario": "",
@@ -110,6 +110,7 @@ cuentas = {
 def login(name, user, pswd):
     print(Fore.LIGHTBLUE_EX + "\n# ======================================== #\n" + Fore.LIGHTCYAN_EX + "Name: " + Fore.LIGHTWHITE_EX + name + "\n" + Fore.LIGHTCYAN_EX + "Usuario: " + Fore.LIGHTWHITE_EX + user + "\n" + Fore.LIGHTCYAN_EX + "Contraseña: " + Fore.LIGHTWHITE_EX + pswd + Fore.LIGHTBLUE_EX + "\n# ======================================== #" + Fore.RESET)
     browser.get("https://www.corazondemelon.es")
+
     time.sleep(1)
     browser.find_element_by_xpath('/html/body/app-amoursucre/index/app-disconnected-page/connection-bar/form/label/input').send_keys(user)
     browser.find_element_by_xpath('/html/body/app-amoursucre/index/app-disconnected-page/connection-bar/form/span/input').send_keys(pswd)
@@ -131,7 +132,12 @@ for cuenta in cuentas:
 if acc_num == 0:
     print(Fore.LIGHTRED_EX + "[·] No hay cuentas registradas..." + Fore.RESET)
 else:
-    browser = webdriver.Chrome(executable_path='./chromedriver')
+    try:
+        browser = webdriver.Chrome(executable_path='./chromedriver')
+    except Exception as error:
+        update_chromedriver.start(error)
+        browser = webdriver.Chrome(executable_path='./chromedriver')
+
     print(Fore.LIGHTMAGENTA_EX + "[·] Cuentas registradas: " + Fore.LIGHTWHITE_EX + str(acc_num) + Fore.RESET)
     for cuenta in cuentas:
         if not cuenta == "null":
