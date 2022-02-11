@@ -82,12 +82,12 @@ def start(name):
 # -------- Login -------- #
 cuentas = {
         "LewdNeko": {
-            "usuario": "",
-            "contraseña": ""
+            "usuario": "mabapa9797@vreagles.com",
+            "contraseña": "mabapa9797"
     },
         "neko": {
-            "usuario": "",
-            "contraseña": ""
+            "usuario": "xkoeppb_h794z@hexud.com",
+            "contraseña": "xkoeppb"
     },
         "null": {
             "usuario": "",
