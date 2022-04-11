@@ -1,0 +1,10 @@
+{
+    "Nombre_de_ejemplo": {
+        "usuario": "usuario@gmail.com",
+        "contraseña": "contraseña"
+    },
+    "null": {
+        "usuario": "",
+        "contraseña": ""
+    }
+}
