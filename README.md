@@ -24,5 +24,5 @@ Añadir las cuentas dentro de `cuentas.json`:
         "contraseña": ""
     }
 }
-// Puedes añadir las cuentas que necesites siguiendo la estructura ;)
 ```
+`Puedes añadir las cuentas que necesites siguiendo la estructura ;)`
