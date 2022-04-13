@@ -29,17 +29,16 @@ def Flower_Pawer(browser):
                 .release()
             drawing.perform()
 
-        print(Fore.LIGHTYELLOW_EX + "\t↳ Espera..." + Fore.RESET)
         time.sleep(5)
-
         while True:
             try:
-                browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/button').click()
+                msg = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/div/i18n/span').text
+                try: cant = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/section/div/span').text
+                except: cant = ""
                 break
             except: continue
-        
-        res = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/div/i18n/span').text
-        print(Fore.LIGHTGREEN_EX + "[·] Actividad " + Fore.LIGHTYELLOW_EX + "[Flower Pawer]" + Fore.LIGHTGREEN_EX + " completada! - " + Fore.RESET + res)
+
+        print(Fore.LIGHTGREEN_EX + "[·] Actividad " + Fore.LIGHTYELLOW_EX + "[Flower Pawer]" + Fore.LIGHTGREEN_EX + " completada! - " + Fore.RESET + f"{msg} {cant}")
 
     except:
         print(Fore.LIGHTRED_EX + "[·] Actividad "  + Fore.LIGHTYELLOW_EX + "[Flower Pawer]" + Fore.LIGHTRED_EX + " ya completada." + Fore.RESET)
@@ -67,8 +66,10 @@ def Rasca_y_gana(browser):
         drawing.perform()
 
         time.sleep(1)
-        res = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/div/i18n/span').text
-        print(Fore.LIGHTGREEN_EX + "[·] Actividad " + Fore.LIGHTYELLOW_EX + "[Rasca y gana]" + Fore.LIGHTGREEN_EX + " completada! - " + Fore.RESET + res)
+        msg = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/div/i18n/span').text
+        try: cant = browser.find_element(By.XPATH, '//*[contains(@id,"cdk-overlay")]/game-gain/app-modal/div/div/section/div/span').text
+        except: cant = ""
+        print(Fore.LIGHTGREEN_EX + "[·] Actividad " + Fore.LIGHTYELLOW_EX + "[Rasca y gana]" + Fore.LIGHTGREEN_EX + " completada! - " + Fore.RESET + f"{msg} {cant}")
 
     except:
         print(Fore.LIGHTRED_EX + "[·] Actividad "  + Fore.LIGHTYELLOW_EX + "[Rasca y gana]" + Fore.LIGHTRED_EX + " ya completada." + Fore.RESET)
@@ -111,7 +112,10 @@ def main():
 
     if acc_num == 0: print(Fore.LIGHTRED_EX + "[·] No hay cuentas registradas..." + Fore.RESET)
     else:
-        browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        s = Service(ChromeDriverManager().install())
+        options = webdriver.ChromeOptions()
+        options.add_argument("--log-level=3")
+        browser = webdriver.Chrome(service=s, options=options)
         print(Fore.LIGHTMAGENTA_EX + "[·] Cuentas registradas: " + Fore.LIGHTWHITE_EX + str(acc_num) + Fore.RESET)
         
         for cuenta in cuentas:
