@@ -92,8 +92,10 @@ def login(browser, name, user, pswd):
     browser.get("https://www.corazondemelon.es")
 
     time.sleep(2)
-    browser.find_element(By.XPATH, '//*[@id="intro"]/form/label/input').send_keys(user)
-    browser.find_element(By.XPATH, '//*[@id="intro"]/form/span/input').send_keys(pswd)
+    browser.find_elements(By.CLASS_NAME, 'ng-pristine')[1].click()
+    browser.find_elements(By.CLASS_NAME, 'ng-pristine')[1].send_keys(user)
+    browser.find_elements(By.CLASS_NAME, 'ng-pristine')[0].click()
+    browser.find_elements(By.CLASS_NAME, 'ng-pristine')[0].send_keys(pswd)
     browser.find_element(By.XPATH, '//*[@id="intro"]/form/input').click()
     time.sleep(2)
 
